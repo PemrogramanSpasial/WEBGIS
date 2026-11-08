@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebGIS Rekomendasi Wisata Kulon Progo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside id="panel">
+    <h1>Wisata Kulon Progo</h1>
+    <p class="sub">Rencana perjalanan 3 tempat berurutan (AHP–SAW + rute OSRM)</p>
+
+    <section>
+      <label>1. Dari mana Anda akan memulai perjalanan?</label>
+      <div class="row">
+        <button id="btn-gps" type="button">📍 Gunakan Lokasi Saya</button>
+        <button id="btn-peta" type="button">🗺️ Pilih pada Peta</button>
+      </div>
+      <div class="row">
+        <input id="lokasi-teks" type="text" placeholder="Masukkan lokasi, mis. Stasiun Wates">
+        <button id="btn-teks" type="button">Cari</button>
+      </div>
+      <small id="lokasi-status">Lokasi belum dipilih.</small>
+    </section>
+
+    <section>
+      <label for="kategori">2. Apa jenis wisata yang ingin Anda kunjungi?</label>
+      <select id="kategori">
+        <option value="bebas">Bebas</option>
+        <option value="alam">Wisata Alam</option>
+        <option value="alam_buatan">Wisata Alam-Buatan</option>
+        <option value="budaya_religi">Budaya dan Religi</option>
+        <option value="agrowisata">Agrowisata</option>
+        <option value="akomodasi_rekreasi">Akomodasi dan Rekreasi</option>
+      </select>
+    </section>
+
+    <section>
+      <label for="waktu">3. Berapa lama waktu yang Anda sediakan untuk perjalanan dan kunjungan?</label>
+      <div class="row">
+        <input id="waktu" type="number" min="1" step="0.5" placeholder="Durasi (jam)" value="4">
+        <label class="chk"><input id="waktu-bebas" type="checkbox"> Tidak dibatasi</label>
+      </div>
+    </section>
+
+    <section>
+      <label for="anggaran">4. Berapa anggaran maksimum per orang? (tiket masuk + makan)</label>
+      <div class="row">
+        <input id="anggaran" type="number" min="0" step="5000" placeholder="Rp/orang" value="50000">
+        <label class="chk"><input id="anggaran-bebas" type="checkbox"> Tidak dibatasi</label>
+      </div>
+    </section>
+
+    <section>
+      <label for="rating">5. Berapa rating minimum destinasi yang Anda inginkan?</label>
+      <select id="rating">
+        <option value="">Tidak dibatasi</option>
+        <option value="3">3,0 ke atas</option>
+        <option value="3.5">3,5 ke atas</option>
+        <option value="4">4,0 ke atas</option>
+        <option value="4.5">4,5 ke atas</option>
+      </select>
+    </section>
+
+    <section>
+      <label for="jam-berangkat">Jam berangkat (opsional)</label>
+      <input id="jam-berangkat" type="time">
+    </section>
+
+    <button id="btn-cari" type="button" class="primary">Cari Rekomendasi</button>
+
+    <div id="hasil"></div>
+  </aside>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
